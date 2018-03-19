@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
+    int count=0;
     Button open_dialog;
     AlertDialog.Builder ab;
     @Override
@@ -26,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
                 ab.setMessage("Aj kuch tufani karte hai");
                 ab.setTitle("Tufani");
                 ab.setIcon(R.mipmap.ic_launcher);
+                ab.setCancelable(false);
                 ab.setPositiveButton("yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -42,5 +44,17 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        count++;
+        if (count==1){
+            Toast.makeText(this, "Press again"+count, Toast.LENGTH_SHORT).show();
+        }
+        else {
+            super.onBackPressed();
+
+        }
     }
 }
